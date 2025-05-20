@@ -31,7 +31,7 @@ aliyun_cdn_refresh:
 ```
 > ⚠️ 为了安全起见，建议项目private，以免密钥泄露。
 > ⚠️ type为Directory时，url必填带/
-> ⚠️
+> ⚠️ 可以直接指定文件链接，无需url和type，但是只能指定文件链接，不能指定目录
 
 ## 🚀 使用方式
 
