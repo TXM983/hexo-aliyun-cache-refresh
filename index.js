@@ -4,7 +4,7 @@ const AliyunCdnRefresher = require('./lib/refresher');
 
 // 监听 deploy 完成后自动执行刷新
 hexo.on('deployAfter', async () => {
-    const config = hexo.config.aliyun_cdn_refresh || hexo.theme.config.aliyun_cdn_refresh || {};
+    const config = hexo.config.aliyun_cdn_refresh || hexo.config.theme_config.aliyun_cdn_refresh || {};
 
     if (!config.accessKeyId || !config.accessKeySecret || !config.paths) {
         hexo.log.error('[alicdn-refresh] 请正确配置 accessKeyId、accessKeySecret 和 paths');
