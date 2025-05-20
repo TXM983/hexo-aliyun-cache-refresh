@@ -3,15 +3,26 @@
   "version": "1.0.0",
   "description": "A Hexo plugin to refresh Alibaba Cloud CDN cache automatically after deployment.",
   "main": "index.js",
-  "keywords": ["hexo", "plugin", "cdn", "alibaba", "refresh", "cache"],
-  "author": "你的名字",
+  "keywords": [
+    "hexo",
+    "plugin",
+    "cdn",
+    "alibaba",
+    "refresh",
+    "cache"
+  ],
+  "author": "TXM983",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/你的用户名/hexo-alicdn-refresher.git"
+    "url": "https://github.com/TXM983/hexo-alicdn-refresher.git"
   },
   "dependencies": {
-    "@alicloud/pop-core": "^1.7.17"
+    "@alicloud/cdn20180510": "^5.0.0",
+    "@alicloud/openapi-client": "^0.4.14",
+    "@alicloud/pop-core": "^1.7.17",
+    "@alicloud/tea-console": "^1.0.0",
+    "@alicloud/tea-util": "^1.4.10"
   },
   "engines": {
     "hexo": ">=5.0.0"
