@@ -7,6 +7,7 @@
 - 自动在 `hexo deploy` 后触发刷新；
 - 支持文件和目录类型的刷新；
 - 避免手动登录阿里云控制台操作，提高效率。
+- 安装简单，开箱即用
 
 ## 📦 安装方法
 
@@ -29,6 +30,8 @@ aliyun_cdn_refresh:
     - "https://www.aimiliy.top/assets/img/logo.png"
 ```
 > ⚠️ 为了安全起见，建议项目private，以免密钥泄露。
+> ⚠️ type为Directory时，url必填带/
+> ⚠️
 
 ## 🚀 使用方式
 
