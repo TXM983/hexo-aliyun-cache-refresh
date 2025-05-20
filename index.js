@@ -3,7 +3,8 @@
 const AliyunCdnRefresher = require('./lib/refresher');
 
 module.exports = function (hexo) {
-    hexo.extend.deploy.register('alicdn-refresh', async () => {
+    // 监听 deploy 完成后自动执行刷新
+    hexo.on('deployAfter', async () => {
         const config = hexo.config.aliyun_cdn_refresh || {};
 
         if (!config.accessKeyId || !config.accessKeySecret || !config.paths) {
@@ -16,7 +17,7 @@ module.exports = function (hexo) {
             accessKeySecret: config.accessKeySecret,
         });
 
-        hexo.log.info('[alicdn-refresh] 开始刷新阿里云 CDN 缓存...');
+        hexo.log.info('[alicdn-refresh] 部署完成，开始刷新阿里云 CDN 缓存...');
 
         for (const item of config.paths) {
             let url, type;
