@@ -34,8 +34,8 @@ hexo.on('deployAfter', async () => {
         hexo.log.info(`[alicdn-refresh] 刷新中: ${url} (${type})`);
 
         try {
-            await refresher.refresh(type, url);
-            hexo.log.info(`[alicdn-refresh] 刷新成功: ${url}`);
+            const resp = await refresher.refresh(type, url);
+            hexo.log.info(`[alicdn-refresh] 刷新成功: ${url} 返回报文: ${JSON.stringify(resp)}`);
         } catch (err) {
             hexo.log.error(`[alicdn-refresh] 刷新失败: ${url}`, err);
         }
