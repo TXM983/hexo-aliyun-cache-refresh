@@ -6,6 +6,8 @@ const AliyunCdnRefresher = require('./lib/refresher');
 hexo.on('deployAfter', async () => {
     const config = hexo.config.aliyun_cdn_refresh || hexo.config.theme_config.aliyun_cdn_refresh || {};
 
+    if(!config.enable) return
+
     if (!config.accessKeyId || !config.accessKeySecret || !config.paths) {
         hexo.log.error('[alicdn-refresh] 请正确配置 accessKeyId、accessKeySecret 和 paths');
         return;
