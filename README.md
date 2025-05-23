@@ -20,6 +20,7 @@ npm install hexo-alicdn-refresher --save
 在 Hexo 项目配置文件中添加以下配置：
 ```yaml
 aliyun_cdn_refresh:
+  enable: true
   accessKeyId: YOUR_ACCESS_KEY_ID
   accessKeySecret: YOUR_ACCESS_KEY_SECRET
   paths:
