@@ -37,7 +37,12 @@ hexo.on('deployAfter', async () => {
 
         try {
             const resp = await refresher.refresh(type, url);
-            hexo.log.info(`[alicdn-refresh] 刷新成功: ${url} 返回报文: ${JSON.stringify(resp)}`);
+            const body = resp?.body;
+            if (resp.statusCode === 200 && body?.refreshTaskId && body?.requestId) {
+                hexo.log.info(`[alicdn-refresh] 刷新成功: ${url} 返回报文: ${JSON.stringify(resp)}`);
+            } else {
+                hexo.log.warn(`[alicdn-refresh] 刷新请求返回状态码正常，但内容异常: ${url} 返回报文: ${JSON.stringify(resp)}`);
+            }
         } catch (err) {
             hexo.log.error(`[alicdn-refresh] 刷新失败: ${url}`, err);
         }
