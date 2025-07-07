@@ -9,7 +9,7 @@ hexo.on('deployAfter', async () => {
     if(!config.enable) return
 
     if (!config.accessKeyId || !config.accessKeySecret || !config.paths) {
-        hexo.log.error('[alicdn-refresh] 请正确配置 accessKeyId、accessKeySecret 和 paths');
+        hexo.log.error('[aliyun-cache] 请正确配置 accessKeyId、accessKeySecret 和 paths');
         return;
     }
 
@@ -18,7 +18,7 @@ hexo.on('deployAfter', async () => {
         accessKeySecret: config.accessKeySecret,
     });
 
-    hexo.log.info('[alicdn-refresh] 部署完成，开始刷新阿里云 CDN 缓存...');
+    hexo.log.info('[aliyun-cache] 部署完成，开始刷新阿里云 CDN 缓存...');
 
     for (const item of config.paths) {
         let url, type;
@@ -29,24 +29,24 @@ hexo.on('deployAfter', async () => {
             url = item.url;
             type = item.type || 'File';
         } else {
-            hexo.log.warn('[alicdn-refresh] 跳过无效配置项:', item);
+            hexo.log.warn('[aliyun-cache] 跳过无效配置项:', item);
             continue;
         }
 
-        hexo.log.info(`[alicdn-refresh] 刷新中: ${url} (${type})`);
+        hexo.log.info(`[aliyun-cache] 刷新中: ${url} (${type})`);
 
         try {
             const resp = await refresher.refresh(type, url);
             const body = resp?.body;
             if (resp.statusCode === 200 && body?.refreshTaskId && body?.requestId) {
-                hexo.log.info(`[alicdn-refresh] 刷新成功: ${url} 返回报文: ${JSON.stringify(resp)}`);
+                hexo.log.info(`[aliyun-cache] 刷新成功: ${url} 返回报文: ${JSON.stringify(resp)}`);
             } else {
-                hexo.log.warn(`[alicdn-refresh] 刷新请求返回状态码正常，但内容异常: ${url} 返回报文: ${JSON.stringify(resp)}`);
+                hexo.log.warn(`[aliyun-cache] 刷新请求返回状态码正常，但内容异常: ${url} 返回报文: ${JSON.stringify(resp)}`);
             }
         } catch (err) {
-            hexo.log.error(`[alicdn-refresh] 刷新失败: ${url}`, err);
+            hexo.log.error(`[aliyun-cache] 刷新失败: ${url}`, err);
         }
     }
 
-    hexo.log.info('[alicdn-refresh] 缓存刷新任务完成');
+    hexo.log.info('[aliyun-cache] 缓存刷新任务完成');
 });

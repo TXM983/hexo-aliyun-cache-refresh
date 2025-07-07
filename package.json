@@ -1,5 +1,5 @@
 {
-  "name": "hexo-alicdn-refresher",
+  "name": "hexo-aliyun-cache-refresh",
   "version": "2.0.6",
   "description": "A Hexo plugin to refresh Alibaba Cloud CDN cache automatically after deployment.",
   "main": "index.js",
@@ -10,7 +10,8 @@
     "cdn",
     "alibaba",
     "refresh",
-    "cache"
+    "cache",
+    "esa"
   ],
   "author": "TXM983",
   "license": "MIT",
@@ -20,9 +21,12 @@
   },
   "dependencies": {
     "@alicloud/cdn20180510": "^5.0.0",
+    "@alicloud/credentials": "^2.4.4",
+    "@alicloud/esa20240910": "^2.28.0",
     "@alicloud/openapi-client": "^0.4.14",
     "@alicloud/pop-core": "^1.7.17",
-    "@alicloud/tea-console": "^1.0.0"
+    "@alicloud/tea-console": "^1.0.0",
+    "@alicloud/tea-util": "^1.4.10"
   },
   "engines": {
     "hexo": ">=5.0.0"
