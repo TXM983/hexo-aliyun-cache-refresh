@@ -17,7 +17,7 @@ async function main() {
         const esaResp = await refresher.refresh(
             'Directory',
             'https://miraii.cn/',
-            'esa'
+            'ESA'
         );
         console.log('ESA 刷新结果:', esaResp);
     } catch (err) {
