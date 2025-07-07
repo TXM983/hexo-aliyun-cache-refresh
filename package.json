@@ -1,6 +1,6 @@
 {
   "name": "hexo-aliyun-cache-refresh",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "A Hexo plugin to refresh Alibaba Cloud CDN cache automatically after deployment.",
   "main": "index.js",
   "keywords": [
