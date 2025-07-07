@@ -1,29 +1,35 @@
 # hexo-aliyun-cache-refresh
 
-🚀 一个 Hexo 插件，用于在每次部署后自动刷新阿里云 CDN 缓存。
+🚀 一个用于 Hexo 的自动化插件，在网站部署后自动刷新阿里云 CDN 或 ESA 的缓存，加速页面更新同步，省去手动操作控制台的繁琐步骤。
 
-## ✨ 功能介绍
+---
 
-- 自动在 `hexo deploy` 后触发刷新；
-- 支持文件和目录类型的刷新；
-- 避免手动登录阿里云控制台操作，提高效率。
-- 安装简单，开箱即用
+## ✨ 插件特性
+
+- 🌀 **自动触发**：部署 (`hexo deploy`) 后自动刷新缓存；
+- 🌐 **多服务支持**：支持刷新阿里云 CDN 和边缘计算加速平台 ESA；
+- 📁 **文件/目录灵活刷新**：支持精确到某个文件或整目录的刷新；
+- 💡 **多路径配置**：支持多条刷新路径，独立配置类型与服务；
+- 🧰 **开箱即用**：安装后简单配置即可使用，部署流程无感集成。
+
+---
 
 ## 📦 安装方法
+
+在 Hexo 项目根目录中执行：
 
 ```bash
 npm install hexo-aliyun-cache-refresh --save
 ```
 
-## ⚙️ 配置方式
-
-在 Hexo 项目配置文件中添加以下配置：
-```yaml
+## 插件配置
+在主配置文件 _config.yml（或主题配置文件中）添加：
+```shell
 aliyun_cdn_refresh:
   enable: true
-  accessKeyId: YOUR_ACCESS_KEY_ID
-  accessKeySecret: YOUR_ACCESS_KEY_SECRET
-  siteId: xxxxxx  # ESA 所需
+  accessKeyId: YOUR_ACCESS_KEY_ID         
+  accessKeySecret: YOUR_ACCESS_KEY_SECRET 
+  siteId: 810543187184144                 # ESA 所需，登录阿里云控制台获取
   paths:
     - url: "https://www.aimiliy.top/"
       type: Directory
@@ -34,23 +40,24 @@ aliyun_cdn_refresh:
     - url: "https://www.aimiliy.top/assets/img/logo.png"
       type: File
 ```
-> ⚠️ 为了安全起见，建议项目private，以免密钥泄露。
-> ⚠️ type为Directory时，url必填带/
-> ⚠️ 不填 service 默认走 cdn
+
+## ⚠️ 注意事项
+- type 仅支持 File 或 Directory（区分大小写）；
+- Directory 类型的路径必须以 / 结尾；
+- service 可填 CDN 或 ESA，默认值为 CDN；
+- 建议将博客仓库设置为私有以避免泄露 AccessKey。
+
 
 ## 🚀 使用方式
-
-部署时自动执行：
-```bash
+执行以下命令部署：
+```shell
 hexo clean && hexo g && hexo d
 ```
+部署完成后，插件将自动读取配置并刷新 CDN / ESA 缓存，无需额外命令。
 
-部署成功后会自动触发 CDN 缓存刷新。
 
+## 📚 相关文档
 
-## 🧪 效果示例
-```yaml
-[hexo-aliyun-cache-refresh] 🚀 开始刷新阿里云 CDN 缓存...
-✅ 成功刷新：https://yourdomain.com/
-✅ 成功刷新：https://yourdomain.com/index.html
-```
+- [阿里云 CDN 刷新缓存](https://help.aliyun.com/document_detail/27136.html)
+- [阿里云 ESA API 文档](https://api.aliyun.com/product/ESA)
+- [Hexo 插件开发文档](https://hexo.io/zh-cn/docs/plugins)
